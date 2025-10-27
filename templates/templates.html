@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endpoints da API Rodovias</title>
+
+    <!-- CSS e Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <h1>API DCrash</h1>
+
+        <h2>Endpoints Disponíveis</h2>
+
+        <!-- Botões com ícones e ripple -->
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/tabela'">
+            <i class="fa-solid fa-table"></i>
+            Tabela Acidentes
+        </button>
+
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/rodovias'">
+            <i class="fa-solid fa-road"></i>
+            Tabela Rodovias
+        </button>
+
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/rodovias/codigo'">
+            <i class="fa-solid fa-code"></i>
+           Códigos das Rodovias
+        </button>
+
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/rodovias/nome'">
+            <i class="fa-solid fa-font"></i>
+            Nomes das Rodovias
+        </button>
+
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/rodovias/nome/codigo'">
+            <i class="fa-solid fa-list"></i>
+            Nome e Código das Rodovias
+        </button>
+
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/rodovias/id'">
+            <i class="fa-solid fa-hashtag"></i>
+            IDs das Rodovias
+        </button>
+
+        <button class="get" onclick="window.location.href='http://127.0.0.1:5000/rodovias/id/codigo'">
+            <i class="fa-solid fa-database"></i>
+            ID e Código das Rodovias
+        </button>
+
+    </div>
+
+    <!-- Script do efeito ripple -->
+    <script>
+        document.querySelectorAll("button").forEach(btn => {
+            btn.addEventListener("click", function (e) {
+                const ripple = document.createElement("span");
+                ripple.classList.add("ripple");
+                const rect = this.getBoundingClientRect();
+                ripple.style.left = `${e.clientX - rect.left}px`;
+                ripple.style.top = `${e.clientY - rect.top}px`;
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body>
+</html>
